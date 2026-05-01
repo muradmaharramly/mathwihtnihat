@@ -1,0 +1,126 @@
+@import '../styles/variables';
+
+.testimonials {
+  padding: 6rem 0;
+  background-color: $secondary-color;
+
+  .section-title {
+    color: $primary-color;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .testimonials-swiper {
+    padding-bottom: 50px;
+    
+    .swiper-pagination-bullet-active {
+      background: $primary-color;
+    }
+  }
+
+  .testim-card {
+    background: $bg-color;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: $box-shadow;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: $transition;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $box-shadow-hover;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+
+      .stars {
+        display: flex;
+        gap: 4px;
+        color: $secondary-color;
+
+        svg {
+          width: 20px;
+          height: 20px;
+          fill: transparent;
+          stroke: currentColor;
+          stroke-width: 2;
+        }
+
+        .filled {
+          color: $primary-color;
+          fill: $primary-color;
+          stroke: $primary-color;
+        }
+      }
+
+      .quote-icon {
+        color: $secondary-color;
+        font-size: 2.5rem;
+        line-height: 1;
+      }
+    }
+
+    .review-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: $text-color;
+      margin-bottom: 25px;
+      flex: 1;
+      font-weight: 500;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: $secondary-color;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .student-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      .avatar {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: white;
+      }
+
+      .name-role {
+        display: flex;
+        flex-direction: column;
+
+        h4 {
+          font-weight: 700;
+          font-size: 1.05rem;
+          color: $primary-color;
+          margin-bottom: 2px;
+        }
+
+        span {
+          font-size: 0.85rem;
+          color: $light-text;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@import '../styles/variables';
+
+.advantages {
+  padding: 8rem 0;
+  background-color: $secondary-color;
+  position: relative;
+  overflow: hidden;
+
+  .section-title {
+    position: relative;
+    z-index: 1;
+  }
+
+  .advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .adv-card {
+    background: $bg-color;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(43, 53, 55, 0.08);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border-color: rgba(43, 53, 55, 0.2);
+
+      .adv-header .adv-icon {
+        background: $primary-color;
+        color: $bg-color;
+        transform: rotate(5deg);
+      }
+    }
+
+    .adv-header {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+
+      .adv-icon {
+        width: 55px;
+        height: 55px;
+        background: $secondary-color;
+        color: $primary-color;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+        
+        svg {
+          width: 26px;
+          height: 26px;
+        }
+      }
+
+      h3 {
+        color: $primary-color;
+        font-size: 1.35rem;
+        margin-bottom: 0;
+        font-weight: 700;
+      }
+    }
+
+    p {
+      color: $text-color;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}

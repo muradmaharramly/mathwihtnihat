@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+$primary-color: #2B3537;
+$secondary-color: #E8E8E8;
+$bg-color: #FFFFFF;
+$text-color: #2B3537;
+$light-text: #5a6b6d;
+
+$accent-color: #1e2627;
+$accent-light: rgba(43, 53, 55, 0.05);
+
+$border-radius: 12px;
+$border-radius-lg: 20px;
+$border-radius-full: 9999px;
+
+$box-shadow: 0 4px 20px rgba(43, 53, 55, 0.06);
+$box-shadow-hover: 0 12px 30px rgba(43, 53, 55, 0.12);
+$glass-bg: rgba(255, 255, 255, 0.85);
+$glass-border: 1px solid rgba(43, 53, 55, 0.05);
+
+$transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);

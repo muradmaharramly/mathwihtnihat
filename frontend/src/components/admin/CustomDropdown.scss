@@ -1,0 +1,70 @@
+@import '../../styles/variables';
+
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  font-family: inherit;
+
+  .dropdown-header {
+    padding: 12px 15px;
+    border: 1px solid rgba(43, 53, 55, 0.2);
+    border-radius: 8px;
+    background: $bg-color;
+    color: $text-color;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: $transition;
+
+    &.open {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba(43, 53, 55, 0.1);
+    }
+
+    .icon {
+      transition: transform 0.3s ease;
+      color: $light-text;
+      
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    background: $bg-color;
+    border: 1px solid $secondary-color;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 100;
+    max-height: 200px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 5px 0;
+    animation: fadeIn 0.2s ease;
+
+    li {
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: $transition;
+      color: $text-color;
+
+      &:hover {
+        background: $secondary-color;
+      }
+
+      &.selected {
+        background: rgba(43, 53, 55, 0.05);
+        font-weight: 600;
+        color: $primary-color;
+      }
+    }
+  }
+}

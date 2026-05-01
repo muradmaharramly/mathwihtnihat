@@ -1,0 +1,140 @@
+@import '../styles/variables';
+
+.services {
+  padding: 6rem 0;
+  background-color: $bg-color;
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+  }
+
+  .service-card {
+    background: $bg-color;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(43, 53, 55, 0.08);
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transform: translateY(-5px);
+      border-color: rgba(43, 53, 55, 0.2);
+      
+      .service-header .icon-wrapper {
+        background: $primary-color;
+        color: $bg-color;
+        transform: rotate(5deg);
+      }
+    }
+
+    .service-header {
+      margin-bottom: 2rem;
+
+      .icon-wrapper {
+        width: 55px;
+        height: 55px;
+        background: $secondary-color;
+        color: $primary-color;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        transition: $transition;
+      }
+
+      .category-badge {
+        display: inline-block;
+        background-color: $secondary-color;
+        color: $primary-color;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      h3 {
+        color: $primary-color;
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        font-weight: 700;
+      }
+
+      p {
+        color: $text-color;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+    }
+
+    .btn-show-prices {
+      width: 100%;
+      background: transparent;
+      color: $primary-color;
+      border: 1px solid $primary-color;
+      padding: 0.8rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      
+      &:hover {
+        background: $primary-color;
+        color: $bg-color;
+      }
+    }
+
+    .pricing-list {
+      margin-top: 1.5rem;
+      border-top: 1px solid rgba(43, 53, 55, 0.1);
+      padding-top: 1.5rem;
+      animation: fadeIn 0.3s ease;
+
+      .price-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.8rem;
+        padding: 0.8rem 1rem;
+        background: $secondary-color;
+        border-radius: 10px;
+        transition: all 0.2s ease;
+
+        &:last-child { margin-bottom: 0; }
+
+        &:hover {
+          background: rgba(43, 53, 55, 0.05);
+        }
+
+        .class-name {
+          font-weight: 600;
+          color: $primary-color;
+          font-size: 0.9rem;
+        }
+
+        .price-val {
+          color: $primary-color;
+          font-weight: 700;
+          font-size: 1.05rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

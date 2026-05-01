@@ -1,0 +1,52 @@
+@import '../styles/variables';
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $secondary-color;
+  
+  .login-box {
+    background: $bg-color;
+    padding: 2rem 3rem;
+    border-radius: $border-radius-lg;
+    box-shadow: $box-shadow;
+    width: 100%;
+    max-width: 400px;
+    
+    h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: $primary-color;
+    }
+    
+    .input-group {
+      margin-bottom: 1rem;
+      
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        color: $light-text;
+      }
+      
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: $border-radius;
+        outline: none;
+        
+        &:focus {
+          border-color: $primary-color;
+        }
+      }
+    }
+    
+    button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+}

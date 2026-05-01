@@ -1,0 +1,128 @@
+@import '../styles/variables';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 25px 0;
+  transition: $transition;
+  background: transparent;
+  
+  &.scrolled {
+    padding: 15px 0;
+    background: $glass-bg;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: $primary-color;
+    cursor: pointer;
+    letter-spacing: -0.5px;
+    
+    span {
+      color: $light-text;
+      font-weight: 300;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    
+    li {
+      cursor: pointer;
+      font-weight: 500;
+      color: $primary-color;
+      font-size: 1.05rem;
+      transition: $transition;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: $primary-color;
+        transition: $transition;
+      }
+      
+      &:hover {
+        color: $accent-color;
+        &::after { width: 100%; }
+      }
+      
+      &.nav-btn {
+        background: $primary-color;
+        color: $bg-color;
+        padding: 10px 24px;
+        border-radius: $border-radius-full;
+        
+        &::after { display: none; }
+        
+        &:hover {
+          background: lighten($primary-color, 10%);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba($primary-color, 0.2);
+        }
+      }
+    }
+  }
+
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+    color: $primary-color;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    .menu-icon { display: block; }
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: $bg-color;
+      flex-direction: column;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      
+      &.active {
+        padding: 20px 0;
+        max-height: 400px;
+      }
+      
+      li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        
+        &::after { display: none; }
+        
+        &.nav-btn {
+          width: auto;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
