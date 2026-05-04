@@ -3,7 +3,7 @@ import api from '../../api';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import CustomModal from './CustomModal';
-import CustomDropdown from './CustomDropdown';
+import CustomDropdown from '../common/CustomDropdown';
 
 const TestimonialsManager = () => {
   const [testimonials, setTestimonials] = useState([]);

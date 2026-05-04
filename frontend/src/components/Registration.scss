@@ -127,6 +127,35 @@
           background: white;
           box-shadow: 0 20px 50px rgba(0,0,0,0.1);
           margin-top: 5px;
+          padding: 10px;
+
+          li {
+            padding: 12px 15px;
+            border-radius: 12px;
+            margin-bottom: 4px;
+            transition: $transition;
+            color: $primary-color;
+            font-weight: 500;
+
+            &:last-child { margin-bottom: 0; }
+
+            &:hover {
+              background: $secondary-color;
+              color: $primary-color;
+            }
+
+            &.selected {
+              background: rgba($primary-color, 0.05);
+              font-weight: 700;
+              color: $primary-color;
+              
+              &::after {
+                content: '✓';
+                float: right;
+                color: #28a745;
+              }
+            }
+          }
         }
       }
     }
