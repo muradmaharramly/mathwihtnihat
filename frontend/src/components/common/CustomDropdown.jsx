@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 import './CustomDropdown.scss';
 
-const CustomDropdown = ({ options, value, onChange, placeholder }) => {
+const CustomDropdown = ({ options, value, onChange, placeholder, className = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -16,10 +16,10 @@ const CustomDropdown = ({ options, value, onChange, placeholder }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const selectedOption = options.find(opt => opt.value === value);
+  const selectedOption = options.find(opt => opt.value == value);
 
   return (
-    <div className="custom-dropdown" ref={dropdownRef}>
+    <div className={`custom-dropdown ${className}`} ref={dropdownRef}>
       <div 
         className={`dropdown-header ${isOpen ? 'open' : ''}`} 
         onClick={() => setIsOpen(!isOpen)}
@@ -33,7 +33,7 @@ const CustomDropdown = ({ options, value, onChange, placeholder }) => {
           {options.map((option) => (
             <li 
               key={option.value}
-              className={option.value === value ? 'selected' : ''}
+              className={option.value == value ? 'selected' : ''}
               onClick={() => {
                 onChange(option.value);
                 setIsOpen(false);

@@ -2,6 +2,7 @@ import { FiCheckCircle } from 'react-icons/fi';
 import api from '../api';
 import './Registration.scss';
 import { useEffect, useState } from 'react';
+import CustomDropdown from './common/CustomDropdown';
 
 const Registration = () => {
   const [services, setServices] = useState([]);
@@ -32,8 +33,18 @@ const Registration = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleDropdownChange = (val) => {
+    setFormData({ ...formData, service_id: val });
+  };
+
+  const serviceOptions = services.map(s => ({ value: s.id, label: s.title }));
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.service_id) {
+      setError('Zəhmət olmasa bir xidmət seçin.');
+      return;
+    }
     setLoading(true);
     setError('');
 
@@ -113,18 +124,13 @@ const Registration = () => {
 
                     <div className="form-group">
                       <label htmlFor="service_id">Xidmət Seçin *</label>
-                      <select
-                        id="service_id"
-                        name="service_id"
+                      <CustomDropdown
+                        options={serviceOptions}
                         value={formData.service_id}
-                        onChange={handleChange}
-                        required
-                      >
-                        <option value="">Seçim edin...</option>
-                        {services.map(s => (
-                          <option key={s.id} value={s.id}>{s.title}</option>
-                        ))}
-                      </select>
+                        onChange={handleDropdownChange}
+                        placeholder="Xidmət seçin..."
+                        className="registration-dropdown"
+                      />
                     </div>
 
                     <div className="form-group full-width">

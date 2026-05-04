@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../api';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import { toast } from 'react-toastify';
-import CustomDropdown from './CustomDropdown';
+import CustomDropdown from '../common/CustomDropdown';
 import CustomModal from './CustomModal';
 
 const PricesManager = () => {
