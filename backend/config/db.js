@@ -1,5 +1,3 @@
-const { Pool } = require('pg');
-const sqlite3 = require('sqlite3').verbose();
 require('dotenv').config();
 
 const isPostgres = !!process.env.DATABASE_URL;
@@ -7,6 +5,7 @@ const isPostgres = !!process.env.DATABASE_URL;
 let db;
 
 if (isPostgres) {
+  const { Pool } = require('pg');
   db = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false }
@@ -17,6 +16,7 @@ if (isPostgres) {
     return db.query(text, params);
   };
 } else {
+  const sqlite3 = require('sqlite3').verbose();
   db = new sqlite3.Database('./math_portfolio.sqlite', (err) => {
     if (err) console.error('SQLite connection error', err);
     else console.log('Connected to SQLite database locally');
