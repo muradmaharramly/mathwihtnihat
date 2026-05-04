@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiTrendingUp, FiUsers, FiAward } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import './Hero.scss';
 
 const Counter = ({ target, duration = 2000 }) => {
@@ -35,7 +36,12 @@ const Hero = () => {
         <div className="hero-content">
           <h1>Riyaziyyatı bizimlə <span>Kəşf Et!</span></h1>
           <p>Peşəkar yanaşma, fərdi metodika və 100% nəticə zəmanəti ilə riyaziyyatı sadəcə əzbərləməyin, dərk edin.</p>
-          <button className="btn btn-primary" onClick={() => document.getElementById('register').scrollIntoView({behavior: 'smooth'})}>Dərsə Yazıl</button>
+          <div className="hero-btns">
+            <button className="btn btn-primary" onClick={() => document.getElementById('register').scrollIntoView({behavior: 'smooth'})}>Dərsə Yazıl</button>
+            <a href="https://wa.me/994554735050" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+              <FaWhatsapp /> WhatsApp
+            </a>
+          </div>
         </div>
         <div className="hero-dynamic-right">
           <div className="text-card stat-2">

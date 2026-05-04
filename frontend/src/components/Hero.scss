@@ -43,6 +43,42 @@
       margin-bottom: 2.5rem;
       max-width: 500px;
     }
+
+    .hero-btns {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+
+      .btn-whatsapp {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #25D366;
+        color: white;
+        text-decoration: none;
+        padding: 10px 28px;
+        border-radius: $border-radius-full;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        -webkit-border-radius: $border-radius-full;
+        -moz-border-radius: $border-radius-full;
+        -ms-border-radius: $border-radius-full;
+        -o-border-radius: $border-radius-full;
+
+         &:hover {
+          background: #20ba5a;
+          transform: translateY(-3px);
+          box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+          color: white;
+        }
+
+        svg {
+          font-size: 1.4rem;
+        }
+}
+    }
   }
 
   .hero-dynamic-right {
@@ -173,6 +209,7 @@
           font-size: 3.5rem; 
         }
         p { margin: 0 auto 2rem; }
+        .hero-btns { justify-content: center; }
       }
       
       .hero-dynamic-right {
