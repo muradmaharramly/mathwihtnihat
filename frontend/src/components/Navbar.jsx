@@ -39,7 +39,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
         <div className="logo" onClick={() => window.scrollTo(0, 0)}>
-          Math<span>Portfolio</span>
+          Tutor<span>Nihat</span>
         </div>
         
         <div className={`nav-links-wrapper ${menuOpen ? 'active' : ''}`}>

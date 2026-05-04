@@ -292,10 +292,16 @@
 }
 
 // Action Buttons
-.btn-action {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-action, .btn-delete {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -303,8 +309,11 @@
   cursor: pointer;
   transition: $transition;
   font-size: 1.1rem;
+  padding: 0;
+  flex-shrink: 0;
 
   &.success { color: #22c55e; background: #f0fdf4; border-color: #bbf7d0; &:hover { background: #22c55e; color: white; } }
   &.info { color: #3b82f6; background: #eff6ff; border-color: #bfdbfe; &:hover { background: #3b82f6; color: white; } }
   &.warning { color: #f59e0b; background: #fffbeb; border-color: #fef3c7; &:hover { background: #f59e0b; color: white; } }
+  &.btn-delete { color: #ef4444; background: #fee2e2; border-color: #fecaca; &:hover { background: #ef4444; color: white; } }
 }

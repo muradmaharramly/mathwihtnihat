@@ -16,8 +16,8 @@ const LandingPage = () => {
       <Services />
       <Advantages />
       <Testimonials />
-      <FAQ />
       <Registration />
+      <FAQ />
       <Contact />
     </>
   );

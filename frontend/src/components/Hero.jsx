@@ -35,7 +35,7 @@ const Hero = () => {
         <div className="hero-content">
           <h1>Riyaziyyatı bizimlə <span>Kəşf Et!</span></h1>
           <p>Peşəkar yanaşma, fərdi metodika və 100% nəticə zəmanəti ilə riyaziyyatı sadəcə əzbərləməyin, dərk edin.</p>
-          <button className="btn btn-primary" onClick={() => document.getElementById('contact').scrollIntoView({behavior: 'smooth'})}>Dərsə Yazıl</button>
+          <button className="btn btn-primary" onClick={() => document.getElementById('register').scrollIntoView({behavior: 'smooth'})}>Dərsə Yazıl</button>
         </div>
         <div className="hero-dynamic-right">
           <div className="text-card stat-2">
