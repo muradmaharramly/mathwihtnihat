@@ -34,29 +34,61 @@ const Contact = () => {
         <h2 className="section-title">Bizimlə Əlaqə</h2>
         <div className="contact-content">
           <div className="contact-info">
-            <div className="info-item">
-              <FiIcons.FiPhone className="icon" />
-              <span>{settings.contact_phone || '+994 50 000 00 00'}</span>
+            <div className="contact-header">
+              <h3>Əlaqə</h3>
             </div>
-            <div className="info-item">
-              <FiIcons.FiMail className="icon" />
-              <span>{settings.contact_email || 'info@mathwithnihat.az'}</span>
+            
+            <div className="info-list">
+              <div className="info-item">
+                <div className="icon-box">
+                  <FiIcons.FiPhone className="icon" />
+                </div>
+                <div className="info-text">
+                  <label>Telefon</label>
+                  <span>{settings.contact_phone || '+994 55 473 50 50'}</span>
+                </div>
+              </div>
+              
+              <div className="info-item">
+                <div className="icon-box">
+                  <FiIcons.FiMail className="icon" />
+                </div>
+                <div className="info-text">
+                  <label>E-poçt</label>
+                  <span>{settings.contact_email || 'yasinzadenihat56@gmail.com'}</span>
+                </div>
+              </div>
+              
+              <div className="info-item">
+                <div className="icon-box">
+                  <FiIcons.FiMapPin className="icon" />
+                </div>
+                <div className="info-text">
+                  <label>Ünvan</label>
+                  <span>{settings.contact_address || 'Sumqayıt, Azərbaycan'}</span>
+                </div>
+              </div>
             </div>
-            <div className="info-item">
-              <FiIcons.FiMapPin className="icon" />
-              <span>{settings.contact_address || 'Bakı, Azərbaycan'}</span>
-            </div>
-            <div className="social-links">
-              {socialMedia.map(sm => (
-                <a key={sm.id} href={sm.url} target="_blank" rel="noreferrer" title={sm.platform}>
-                  {renderIcon(sm.icon)}
-                </a>
-              ))}
+
+            <div className="social-section">
+              <h4>Bizi İzləyin</h4>
+              <div className="social-links">
+                {socialMedia
+                  .filter(sm => !sm.platform.toLowerCase().includes('instagram'))
+                  .map(sm => (
+                    <a key={sm.id} href={sm.url} target="_blank" rel="noreferrer" title={sm.platform}>
+                      {renderIcon(sm.icon)}
+                    </a>
+                  ))}
+              </div>
             </div>
           </div>
+          
           <div className="contact-map">
              <iframe 
-               src={settings.contact_map_url || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194473.4299596001!2d49.71487440474776!3d40.3945081079313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2sBaku%2C%20Azerbaijan!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s"} 
+               src={(settings.contact_map_url && settings.contact_map_url.includes('google.com/maps/embed')) 
+                    ? settings.contact_map_url 
+                    : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48507.03159938833!2d49.6053308!3d40.5854817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403096dcd0923f6b%3A0xdf45461a50a905a!2sSumqayit%2C%20Azerbaijan!5e0!3m2!1sen!2s!4v1714853000000!5m2!1sen!2s"} 
                width="100%" 
                height="100%" 
                style={{border: 0}} 
