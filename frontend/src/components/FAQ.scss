@@ -182,6 +182,50 @@
       width: 100%;
       position: relative;
       top: 0;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .faq {
+    padding: 4rem 0;
+    .faq-left .question-box {
+      min-height: 250px;
+      padding: 2.5rem;
+      .box-content {
+        h3 { font-size: 1.5rem; }
+        p { font-size: 1rem; }
+      }
+    }
+    .faq-item {
+      .faq-question {
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+      }
+      .faq-answer {
+        padding: 0 1.5rem 1.2rem;
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .faq {
+    .faq-left .question-box {
+      padding: 2rem 1.5rem;
+      min-height: 200px;
+      .box-content h3 { font-size: 1.3rem; }
+    }
+    .faq-item .faq-question {
+      padding: 1rem;
+      gap: 10px;
+      .icon {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+      }
     }
   }
 }

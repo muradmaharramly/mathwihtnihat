@@ -123,4 +123,26 @@
       }
     }
   }
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+    .testim-card {
+      padding: 25px;
+      .review-text { font-size: 1rem; }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .testim-card {
+      padding: 20px;
+      .card-top .quote-icon { font-size: 2rem; }
+      .student-info {
+        gap: 10px;
+        .avatar { width: 40px; height: 40px; font-size: 1rem; }
+        .name-role h4 { font-size: 1rem; }
+      }
+    }
+  }
 }

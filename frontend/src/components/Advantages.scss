@@ -17,6 +17,10 @@
     gap: 2.5rem;
     position: relative;
     z-index: 1;
+
+    @media (max-width: 768px) {
+      gap: 1.5rem;
+    }
   }
 
   .adv-card {
@@ -28,6 +32,11 @@
     transition: all 0.3s ease;
     border: 1px solid rgba(43, 53, 55, 0.08);
 
+    @media (max-width: 480px) {
+      padding: 1.8rem 1.5rem;
+    }
+    
+    // ... rest of card styles ...
     &:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.08);
@@ -62,6 +71,13 @@
           width: 26px;
           height: 26px;
         }
+
+        @media (max-width: 480px) {
+          width: 45px;
+          height: 45px;
+          border-radius: 10px;
+          svg { width: 20px; height: 20px; }
+        }
       }
 
       h3 {
@@ -69,6 +85,10 @@
         font-size: 1.35rem;
         margin-bottom: 0;
         font-weight: 700;
+
+        @media (max-width: 480px) {
+          font-size: 1.15rem;
+        }
       }
     }
 
@@ -77,6 +97,14 @@
       font-size: 1rem;
       line-height: 1.6;
       margin: 0;
+
+      @media (max-width: 480px) {
+        font-size: 0.95rem;
+      }
     }
+  }
+
+  @media (max-width: 768px) {
+    padding: 5rem 0;
   }
 }

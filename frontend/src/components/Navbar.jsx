@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiFacebook, FiYoutube, FiTwitter } from 'react-icons/fi';
+import api from '../api';
 import './Navbar.scss';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [socialMedia, setSocialMedia] = useState([]);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+    
+    const fetchSocials = async () => {
+      try {
+        const res = await api.get('/public/social_media');
+        setSocialMedia(res.data);
+      } catch (err) {
+        console.error('Error fetching socials', err);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
+    fetchSocials();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -29,13 +42,18 @@ const Navbar = () => {
           Math<span>Portfolio</span>
         </div>
         
-        <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          <li onClick={() => scrollTo('services')}>Xidmətlər</li>
-          <li onClick={() => scrollTo('advantages')}>Üstünlüklər</li>
-          <li onClick={() => scrollTo('testimonials')}>Rəylər</li>
-          <li onClick={() => scrollTo('faq')}>FAQ</li>
-          <li className="nav-btn" onClick={() => scrollTo('contact')}>Əlaqə</li>
-        </ul>
+        <div className={`nav-links-wrapper ${menuOpen ? 'active' : ''}`}>
+          
+          <ul className="nav-links">
+            <li onClick={() => scrollTo('services')}>Xidmətlər</li>
+            <li onClick={() => scrollTo('advantages')}>Üstünlüklər</li>
+            <li onClick={() => scrollTo('testimonials')}>Rəylər</li>
+            <li onClick={() => scrollTo('faq')}>FAQ</li>
+            <li className="nav-btn" onClick={() => scrollTo('contact')}>Əlaqə</li>
+          </ul>
+        </div>
+
+        {menuOpen && <div className="mobile-overlay" onClick={() => setMenuOpen(false)}></div>}
 
         <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}

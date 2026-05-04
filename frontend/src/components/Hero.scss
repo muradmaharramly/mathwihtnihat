@@ -2,14 +2,21 @@
 
 .hero {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 8rem 24px 6rem;
   max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
   position: relative;
   background-color: $bg-color;
+
+  .hero-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 4rem;
+  }
 
   .hero-content {
     flex: 1;
@@ -40,7 +47,7 @@
 
   .hero-dynamic-right {
     flex: 1;
-    height: 500px;
+    height: 400px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -62,33 +69,6 @@
       z-index: 1;
     }
 
-    .stat-card {
-      position: absolute;
-      background: $bg-color;
-      padding: 15px 25px;
-      border-radius: $border-radius-lg;
-      box-shadow: $box-shadow-hover;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      z-index: 2;
-      border: 1px solid $secondary-color;
-      
-      .stat-icon {
-        width: 40px; height: 40px;
-        background: $secondary-color;
-        color: $primary-color;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-      }
-      
-      h4 { color: $primary-color; font-size: 1.2rem; font-weight: 700; margin: 0; }
-      span { color: $light-text; font-size: 0.85rem; font-weight: 500; }
-    }
-
     .text-card {
       position: absolute;
       background: $primary-color;
@@ -102,12 +82,57 @@
       max-width: 250px;
       text-align: center;
       line-height: 1.4;
+      top: 50px;
+      right: 0;
+      animation: floatX 6s ease-in-out infinite;
     }
+  }
 
-    .stat-1 { top: 50px; left: 0; animation: floatY 5s ease-in-out infinite; }
-    .stat-2 { top: 120px; right: 0; animation: floatX 6s ease-in-out infinite; }
-    .stat-3 { bottom: 80px; left: 20px; animation: floatY 7s ease-in-out infinite reverse; }
-    .stat-4 { bottom: 130px; right: -20px; animation: floatX 5.5s ease-in-out infinite reverse; }
+  .hero-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: white;
+    padding: 30px 50px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+    animation: fadeInUp 1s ease-out 0.5s both;
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .stat-icon {
+        width: 50px;
+        height: 50px;
+        background: $secondary-color;
+        color: $primary-color;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      .stat-info {
+        h4 {
+          font-size: 1.8rem;
+          color: $primary-color;
+          font-weight: 800;
+          margin: 0;
+          line-height: 1;
+        }
+
+        span {
+          color: $light-text;
+          font-size: 0.95rem;
+          font-weight: 500;
+        }
+      }
+    }
   }
 }
 
@@ -134,20 +159,85 @@
 
 @media (max-width: 992px) {
   .hero {
-    flex-direction: column;
-    text-align: center;
-    padding-top: 8rem;
+    padding-top: 6rem;
     
-    .hero-content {
-      padding-right: 0;
-      margin-bottom: 4rem;
-      h1 { font-size: 3.5rem; }
-      p { margin: 0 auto 2rem; }
+    .hero-main {
+      flex-direction: column;
+      text-align: center;
+      margin-bottom: 2rem;
+
+      .hero-content {
+        padding-right: 0;
+        margin-bottom: 3rem;
+        h1 { 
+          font-size: 3.5rem; 
+        }
+        p { margin: 0 auto 2rem; }
+      }
+      
+      .hero-dynamic-right {
+        height: 300px;
+        transform: scale(0.8);
+      }
     }
-    
-    .hero-dynamic-right {
-      height: 400px;
-      transform: scale(0.8);
+
+    .hero-stats {
+      flex-direction: column;
+      gap: 30px;
+      padding: 30px;
+      text-align: left;
+
+      .stat-item {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    .hero-main {
+      .hero-content {
+        h1 {
+          font-size: 2.8rem;
+        }
+        p {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 5rem;
+    .hero-main {
+      .hero-content {
+        h1 {
+          font-size: 2.2rem;
+        }
+      }
+      .hero-dynamic-right {
+        height: 250px;
+        transform: scale(0.7);
+      }
+    }
+    .hero-stats {
+      padding: 20px;
+      .stat-item {
+        gap: 15px;
+        .stat-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+        .stat-info {
+          h4 { font-size: 1.5rem; }
+          span { font-size: 0.85rem; }
+        }
+      }
     }
   }
 }
