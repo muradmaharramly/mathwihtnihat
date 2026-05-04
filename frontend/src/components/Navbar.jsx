@@ -47,6 +47,7 @@ const Navbar = () => {
           <ul className="nav-links">
             <li onClick={() => scrollTo('services')}>Xidmətlər</li>
             <li onClick={() => scrollTo('advantages')}>Üstünlüklər</li>
+            <li onClick={() => scrollTo('register')}>Dərsə Yazıl</li>
             <li onClick={() => scrollTo('testimonials')}>Rəylər</li>
             <li onClick={() => scrollTo('faq')}>FAQ</li>
             <li className="nav-btn" onClick={() => scrollTo('contact')}>Əlaqə</li>

@@ -234,3 +234,77 @@
     overflow-y: auto;
   }
 }
+
+// Table Styles
+.admin-table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  
+  th {
+    background: #f8fafc;
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 700;
+    color: $primary-color;
+    border-bottom: 2px solid $secondary-color;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+    font-size: 0.95rem;
+    color: $text-color;
+
+    small {
+      display: block;
+      color: $light-text;
+      margin-top: 2px;
+    }
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fafc; }
+}
+
+// Badges
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
+  
+  &-new { background: #e0f2fe; color: #0ea5e9; }
+  &-success { background: #dcfce7; color: #15803d; }
+  &-danger { background: #fee2e2; color: #b91c1c; }
+}
+
+// Action Buttons
+.btn-action {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: $transition;
+  font-size: 1.1rem;
+
+  &.success { color: #22c55e; background: #f0fdf4; border-color: #bbf7d0; &:hover { background: #22c55e; color: white; } }
+  &.info { color: #3b82f6; background: #eff6ff; border-color: #bfdbfe; &:hover { background: #3b82f6; color: white; } }
+  &.warning { color: #f59e0b; background: #fffbeb; border-color: #fef3c7; &:hover { background: #f59e0b; color: white; } }
+}

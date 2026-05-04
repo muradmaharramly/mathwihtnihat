@@ -59,6 +59,17 @@ const createTables = async () => {
       icon VARCHAR(50) NOT NULL,
       url TEXT NOT NULL
     );
+
+    CREATE TABLE IF NOT EXISTS registrations (
+      id ${serialType} PRIMARY KEY,
+      service_id INTEGER REFERENCES services(id),
+      full_name VARCHAR(100) NOT NULL,
+      phone VARCHAR(50) NOT NULL,
+      email VARCHAR(100),
+      notes TEXT,
+      status VARCHAR(20) DEFAULT 'Yeni',
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
   `;
 
   try {

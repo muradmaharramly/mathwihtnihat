@@ -5,6 +5,7 @@ import Services from '../components/Services';
 import Advantages from '../components/Advantages';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
+import Registration from '../components/Registration';
 import Contact from '../components/Contact';
 
 const LandingPage = () => {
@@ -16,6 +17,7 @@ const LandingPage = () => {
       <Advantages />
       <Testimonials />
       <FAQ />
+      <Registration />
       <Contact />
     </>
   );

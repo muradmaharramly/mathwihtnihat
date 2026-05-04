@@ -8,7 +8,9 @@ import AdvantagesManager from '../components/admin/AdvantagesManager';
 import TestimonialsManager from '../components/admin/TestimonialsManager';
 import FaqManager from '../components/admin/FaqManager';
 import ContactSettings from '../components/admin/ContactSettings';
+import RegistrationsManager from '../components/admin/RegistrationsManager';
 import './AdminDashboard.scss';
+import { FiUserPlus } from 'react-icons/fi';
 
 const AdminDashboard = () => {
   const { logout } = useContext(AuthContext);
@@ -27,6 +29,7 @@ const AdminDashboard = () => {
       case 'advantages': return <AdvantagesManager />;
       case 'testimonials': return <TestimonialsManager />;
       case 'faqs': return <FaqManager />;
+      case 'registrations': return <RegistrationsManager />;
       case 'contact': return <ContactSettings />;
       default: return <ServicesManager />;
     }
@@ -39,6 +42,9 @@ const AdminDashboard = () => {
           <h2>Admin Panel</h2>
         </div>
         <ul className="sidebar-menu">
+          <li className={activeTab === 'registrations' ? 'active' : ''} onClick={() => setActiveTab('registrations')}>
+            <FiUserPlus size={20} /> Qeydiyyatlar
+          </li>
           <li className={activeTab === 'services' ? 'active' : ''} onClick={() => setActiveTab('services')}>
             <FiBookOpen size={20} /> Xidmətlər
           </li>

@@ -39,4 +39,9 @@ router.post('/social_media', createSocialMedia);
 router.put('/social_media/:id', updateSocialMedia);
 router.delete('/social_media/:id', deleteSocialMedia);
 
+const { getRegistrations, updateRegistrationStatus, deleteRegistration } = require('../controllers/registrationController');
+router.get('/registrations', getRegistrations);
+router.put('/registrations/:id', updateRegistrationStatus);
+router.delete('/registrations/:id', deleteRegistration);
+
 module.exports = router;
