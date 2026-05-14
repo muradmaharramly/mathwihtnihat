@@ -57,7 +57,7 @@ const HeroManager = () => {
 
     setUploading(true);
     try {
-      const res = await api.post('/admin/upload', formData, {
+      const res = await api.post('/admin/hero-upload', formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
         }

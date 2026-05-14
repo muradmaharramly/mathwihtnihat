@@ -41,7 +41,7 @@ router.post('/social_media', createSocialMedia);
 router.put('/social_media/:id', updateSocialMedia);
 router.delete('/social_media/:id', deleteSocialMedia);
 
-router.post('/upload', upload.single('image'), uploadImage);
+router.post('/hero-upload', upload.single('image'), uploadImage);
 
 const { getRegistrations, updateRegistrationStatus, deleteRegistration } = require('../controllers/registrationController');
 router.get('/registrations', getRegistrations);
