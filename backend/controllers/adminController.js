@@ -253,7 +253,8 @@ const uploadImage = async (req, res) => {
     const imageUrl = `/uploads/${req.file.filename}`;
     res.json({ imageUrl });
   } catch (error) {
-    res.status(500).json({ message: 'Server xətası' });
+    console.error('Upload Error:', error);
+    res.status(500).json({ message: 'Server xətası: ' + error.message });
   }
 };
 

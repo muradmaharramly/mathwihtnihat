@@ -29,6 +29,12 @@ app.get('/', (req, res) => {
     res.send('Math Portfolio API is running...');
 });
 
+// Global Error Handler
+app.use((err, req, res, next) => {
+    console.error('Server Error:', err.stack);
+    res.status(500).json({ message: 'Daxili server xətası: ' + err.message });
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
