@@ -8,8 +8,10 @@ const {
   createAdvantage, updateAdvantage, deleteAdvantage,
   createTestimonial, updateTestimonial, deleteTestimonial,
   createFaq, updateFaq, deleteFaq,
-  createSocialMedia, updateSocialMedia, deleteSocialMedia
+  createSocialMedia, updateSocialMedia, deleteSocialMedia,
+  uploadImage
 } = require('../controllers/adminController');
+const upload = require('../middlewares/uploadMiddleware');
 
 router.use(protect); // All routes below are protected
 
@@ -38,6 +40,8 @@ router.delete('/faqs/:id', deleteFaq);
 router.post('/social_media', createSocialMedia);
 router.put('/social_media/:id', updateSocialMedia);
 router.delete('/social_media/:id', deleteSocialMedia);
+
+router.post('/upload', upload.single('image'), uploadImage);
 
 const { getRegistrations, updateRegistrationStatus, deleteRegistration } = require('../controllers/registrationController');
 router.get('/registrations', getRegistrations);

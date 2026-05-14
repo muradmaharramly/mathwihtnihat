@@ -104,6 +104,22 @@ const createTables = async () => {
       await pool.queryWrapper('INSERT INTO users (username, password_hash) VALUES ($1, $2)', ['admin', hash]);
       console.log('Default admin user created');
     }
+
+    // Seed Hero Settings
+    const heroSettings = [
+      { key: 'hero_title', value: 'Gələcəyi bizimlə <span>Kəşf Et!</span>' },
+      { key: 'hero_description', value: 'Peşəkar yanaşma, fərdi metodika və 99% nəticə zəmanəti ilə riyaziyyat, proqramlaşdırma və İKT-ni sadəcə əzbərləməyin, dərk edin.' },
+      { key: 'hero_slogan', value: 'Gələcəyin mərkəzində olun!' },
+      { key: 'hero_circle_image', value: '' }
+    ];
+
+    for (const setting of heroSettings) {
+      const { rows: settingRows } = await pool.queryWrapper('SELECT * FROM settings WHERE key = $1', [setting.key]);
+      if (settingRows.length === 0) {
+        await pool.queryWrapper('INSERT INTO settings (key, value) VALUES ($1, $2)', [setting.key, setting.value]);
+      }
+    }
+    console.log('Hero settings ensured.');
   } catch (err) {
     console.error('Error creating tables', err);
   }

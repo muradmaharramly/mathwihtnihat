@@ -30,12 +30,38 @@ const Counter = ({ target, duration = 2000 }) => {
 };
 
 const Hero = () => {
+  const [heroData, setHeroData] = useState({
+    hero_title: 'Gələcəyi bizimlə <span>Kəşf Et!</span>',
+    hero_description: 'Peşəkar yanaşma, fərdi metodika və 99% nəticə zəmanəti ilə riyaziyyat, proqramlaşdırma və İKT-ni sadəcə əzbərləməyin, dərk edin.',
+    hero_slogan: 'Gələcəyin mərkəzində olun!',
+    hero_circle_image: ''
+  });
+
+  useEffect(() => {
+    const fetchHeroData = async () => {
+      try {
+        const res = await api.get('/public/settings');
+        setHeroData({
+          hero_title: res.data.hero_title || heroData.hero_title,
+          hero_description: res.data.hero_description || heroData.hero_description,
+          hero_slogan: res.data.hero_slogan || heroData.hero_slogan,
+          hero_circle_image: res.data.hero_circle_image || ''
+        });
+      } catch (error) {
+        console.error('Error fetching hero data', error);
+      }
+    };
+    fetchHeroData();
+  }, []);
+
+  const API_URL = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5000';
+
   return (
     <section className="hero" id="hero">
       <div className="hero-main">
         <div className="hero-content">
-          <h1>Riyaziyyatı bizimlə <span>Kəşf Et!</span></h1>
-          <p>Peşəkar yanaşma, fərdi metodika və 100% nəticə zəmanəti ilə riyaziyyatı sadəcə əzbərləməyin, dərk edin.</p>
+          <h1 dangerouslySetInnerHTML={{ __html: heroData.hero_title }}></h1>
+          <p>{heroData.hero_description}</p>
           <div className="hero-btns">
             <button className="btn btn-primary" onClick={() => document.getElementById('register').scrollIntoView({behavior: 'smooth'})}>Dərsə Yazıl</button>
             <a href="https://wa.me/994554735050" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
@@ -45,11 +71,15 @@ const Hero = () => {
         </div>
         <div className="hero-dynamic-right">
           <div className="text-card stat-2">
-            "Riyaziyyat heç vaxt bu qədər asan olmamışdı!"
+            "{heroData.hero_slogan}"
           </div>
           
           <div className="center-circle">
-            <span>Riyaziyyat</span>
+            {heroData.hero_circle_image ? (
+              <img src={`${API_URL}${heroData.hero_circle_image}`} alt="Hero Circle" />
+            ) : (
+              <span>TutorNihat</span>
+            )}
           </div>
         </div>
       </div>

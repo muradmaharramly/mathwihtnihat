@@ -245,6 +245,18 @@ const deleteSocialMedia = async (req, res) => {
   }
 };
 
+const uploadImage = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'Şəkil seçilməyib' });
+    }
+    const imageUrl = `/uploads/${req.file.filename}`;
+    res.json({ imageUrl });
+  } catch (error) {
+    res.status(500).json({ message: 'Server xətası' });
+  }
+};
+
 module.exports = {
   updateSetting,
   createService, updateService, deleteService,
@@ -252,5 +264,6 @@ module.exports = {
   createAdvantage, updateAdvantage, deleteAdvantage,
   createTestimonial, updateTestimonial, deleteTestimonial,
   createFaq, updateFaq, deleteFaq,
-  createSocialMedia, updateSocialMedia, deleteSocialMedia
+  createSocialMedia, updateSocialMedia, deleteSocialMedia,
+  uploadImage
 };

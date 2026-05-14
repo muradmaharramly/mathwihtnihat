@@ -8,18 +8,24 @@ const protect = (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     try {
+      console.log('Auth Header Received:', req.headers.authorization);
       token = req.headers.authorization.split(' ')[1];
+      if (!process.env.JWT_SECRET) {
+        console.error('CRITICAL: JWT_SECRET is missing in environment variables!');
+      }
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = decoded;
-      next();
+      return next();
     } catch (error) {
-      console.error(error);
-      res.status(401).json({ message: 'Not authorized, token failed' });
+      console.error('JWT Verification Error:', error.message);
+      console.log('Received Token:', token ? 'Token present' : 'No token');
+      return res.status(401).json({ message: 'Not authorized, token failed' });
     }
   }
 
   if (!token) {
-    res.status(401).json({ message: 'Not authorized, no token' });
+    console.log('No Authorization header or token found');
+    return res.status(401).json({ message: 'Not authorized, no token' });
   }
 };
 
