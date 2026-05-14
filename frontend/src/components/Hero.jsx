@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiTrendingUp, FiUsers, FiAward } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
+import api from '../api';
 import './Hero.scss';
 
 const Counter = ({ target, duration = 2000 }) => {
