@@ -4,13 +4,15 @@ const fs = require('fs');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const uploadPath = './uploads';
-    console.log('Multer destination path:', uploadPath);
+    const uploadPath = path.resolve(process.cwd(), 'uploads');
+    console.log('Target upload path:', uploadPath);
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath, { recursive: true });
+    }
     cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
     const filename = Date.now() + path.extname(file.originalname);
-    console.log('Multer filename:', filename);
     cb(null, filename);
   }
 });
