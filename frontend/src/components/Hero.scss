@@ -254,6 +254,11 @@
           font-size: 1.1rem;
         }
       }
+      .hero-dynamic-right {
+        .text-card {
+          display: none;
+        }
+      }
     }
   }
 }
