@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api';
-import * as FiIcons from 'react-icons/fi';
+import DynamicIcon from './common/DynamicIcon';
 import './Advantages.scss';
 
 const Advantages = () => {
@@ -19,8 +19,7 @@ const Advantages = () => {
   }, []);
 
   const renderIcon = (iconName) => {
-    const IconComponent = FiIcons[iconName];
-    return IconComponent ? <IconComponent size={32} /> : <FiIcons.FiCheckCircle size={32} />;
+    return <DynamicIcon name={iconName} size={32} />;
   };
 
   return (

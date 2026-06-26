@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api';
-import * as FiIcons from 'react-icons/fi';
+import { FiPhone, FiMail, FiMapPin, FiLink } from 'react-icons/fi';
+import DynamicIcon from './common/DynamicIcon';
 import './Contact.scss';
 
 const Contact = () => {
@@ -8,8 +9,8 @@ const Contact = () => {
   const [socialMedia, setSocialMedia] = useState([]);
 
   const renderIcon = (iconName) => {
-    const IconComponent = FiIcons[iconName];
-    return IconComponent ? <IconComponent /> : <FiIcons.FiLink />;
+    if (!iconName) return <FiLink />;
+    return <DynamicIcon name={iconName} />;
   };
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const Contact = () => {
             <div className="info-list">
               <div className="info-item">
                 <div className="icon-box">
-                  <FiIcons.FiPhone className="icon" />
+                  <FiPhone className="icon" />
                 </div>
                 <div className="info-text">
                   <label>Telefon</label>
@@ -51,7 +52,7 @@ const Contact = () => {
               
               <div className="info-item">
                 <div className="icon-box">
-                  <FiIcons.FiMail className="icon" />
+                  <FiMail className="icon" />
                 </div>
                 <div className="info-text">
                   <label>E-poçt</label>
@@ -61,7 +62,7 @@ const Contact = () => {
               
               <div className="info-item">
                 <div className="icon-box">
-                  <FiIcons.FiMapPin className="icon" />
+                  <FiMapPin className="icon" />
                 </div>
                 <div className="info-text">
                   <label>Ünvan</label>
