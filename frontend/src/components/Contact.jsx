@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import api from '../api';
 import { FiPhone, FiMail, FiMapPin, FiLink } from 'react-icons/fi';
 import DynamicIcon from './common/DynamicIcon';
+import Loader from './common/Loader';
 import './Contact.scss';
 
 const Contact = () => {
   const [settings, setSettings] = useState({});
   const [socialMedia, setSocialMedia] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const renderIcon = (iconName) => {
     if (!iconName) return <FiLink />;
@@ -24,6 +26,8 @@ const Contact = () => {
         setSocialMedia(smRes.data);
       } catch (error) {
         console.error('Error fetching data', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -33,6 +37,9 @@ const Contact = () => {
     <section className="contact" id="contact">
       <div className="container">
         <h2 className="section-title">Bizimlə Əlaqə</h2>
+        {loading ? (
+          <Loader />
+        ) : (
         <div className="contact-content">
           <div className="contact-info">
             <div className="contact-header">
@@ -99,6 +106,7 @@ const Contact = () => {
              ></iframe>
           </div>
         </div>
+        )}
       </div>
     </section>
   );

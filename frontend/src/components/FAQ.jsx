@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api';
 import { FiChevronDown, FiHelpCircle } from 'react-icons/fi';
+import Loader from './common/Loader';
 import './FAQ.scss';
 
 const FAQ = () => {
   const [faqs, setFaqs] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchFaqs = async () => {
@@ -14,6 +16,8 @@ const FAQ = () => {
         setFaqs(res.data);
       } catch (error) {
         console.error('Error fetching FAQs', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchFaqs();
@@ -49,7 +53,9 @@ const FAQ = () => {
           
           <div className="faq-right">
             <div className="faq-list">
-              {faqs.map((faq, index) => (
+              {loading ? (
+                <Loader />
+              ) : faqs.map((faq, index) => (
                 <div 
                   key={faq.id} 
                   className={`faq-item ${activeIndex === index ? 'active' : ''}`}

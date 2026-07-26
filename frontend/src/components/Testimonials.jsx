@@ -4,12 +4,14 @@ import { FiStar } from 'react-icons/fi';
 import { FaQuoteRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
+import Loader from './common/Loader';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './Testimonials.scss';
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -18,6 +20,8 @@ const Testimonials = () => {
         setTestimonials(res.data);
       } catch (error) {
         console.error('Error fetching testimonials', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchTestimonials();
@@ -77,7 +81,9 @@ const Testimonials = () => {
       <div className="container">
         <h2 className="section-title">Tələbələrimiz Nə Deyir?</h2>
         
-        {testimonials.length > 4 ? (
+        {loading ? (
+          <Loader />
+        ) : testimonials.length > 4 ? (
           <Swiper
             modules={[Pagination, Autoplay]}
             spaceBetween={30}

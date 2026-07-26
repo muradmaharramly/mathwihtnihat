@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api';
 import { FiBookOpen } from 'react-icons/fi';
+import Loader from './common/Loader';
 import './Services.scss';
 
 const Services = () => {
   const [services, setServices] = useState([]);
   const [prices, setPrices] = useState([]);
   const [openPricesId, setOpenPricesId] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const togglePrices = (id) => {
     setOpenPricesId(openPricesId === id ? null : id);
@@ -23,6 +25,8 @@ const Services = () => {
         setPrices(pricesRes.data);
       } catch (error) {
         console.error('Error fetching services data', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -34,7 +38,9 @@ const Services = () => {
         <h2 className="section-title">Xidmətlər və Qiymətlər</h2>
         
         <div className="services-grid">
-          {services.length === 0 ? (
+          {loading ? (
+            <Loader />
+          ) : services.length === 0 ? (
             <p>Heç bir xidmət tapılmadı.</p>
           ) : (
             services.map(service => (

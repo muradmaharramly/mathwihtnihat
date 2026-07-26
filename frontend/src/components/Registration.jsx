@@ -3,6 +3,7 @@ import api from '../api';
 import './Registration.scss';
 import { useEffect, useState } from 'react';
 import CustomDropdown from './common/CustomDropdown';
+import Loader from './common/Loader';
 
 const Registration = () => {
   const [services, setServices] = useState([]);
@@ -14,6 +15,7 @@ const Registration = () => {
     notes: ''
   });
   const [loading, setLoading] = useState(false);
+  const [fetchLoading, setFetchLoading] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
 
@@ -24,6 +26,8 @@ const Registration = () => {
         setServices(res.data);
       } catch (err) {
         console.error('Error fetching services', err);
+      } finally {
+        setFetchLoading(false);
       }
     };
     fetchServices();
@@ -63,6 +67,9 @@ const Registration = () => {
     <section className="registration" id="register">
       <div className="container">
         <div className="registration-card">
+          {fetchLoading ? (
+            <Loader />
+          ) : (
           <div className="registration-content">
             {isSubmitted ? (
               <div className="registration-success">
@@ -159,6 +166,7 @@ const Registration = () => {
               </>
             )}
           </div>
+          )}
         </div>
       </div>
     </section>

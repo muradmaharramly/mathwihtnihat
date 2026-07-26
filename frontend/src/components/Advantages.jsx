@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api';
 import DynamicIcon from './common/DynamicIcon';
+import Loader from './common/Loader';
 import './Advantages.scss';
 
 const Advantages = () => {
   const [advantages, setAdvantages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAdvantages = async () => {
@@ -13,6 +15,8 @@ const Advantages = () => {
         setAdvantages(res.data);
       } catch (error) {
         console.error('Error fetching advantages', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchAdvantages();
@@ -26,8 +30,11 @@ const Advantages = () => {
     <section className="advantages" id="advantages">
       <div className="container">
         <h2 className="section-title">Niyə Bizi Seçməlisiniz?</h2>
-        <div className="advantages-grid">
-          {advantages.map(adv => (
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="advantages-grid">
+            {advantages.map(adv => (
             <div key={adv.id} className="adv-card">
               <div className="adv-header">
                 <div className="adv-icon">
@@ -39,6 +46,7 @@ const Advantages = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
     </section>
   );

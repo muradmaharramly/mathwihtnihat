@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FiTrendingUp, FiUsers, FiAward } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import api from '../api';
+import Loader from './common/Loader';
 import './Hero.scss';
 
 const Counter = ({ target, duration = 2000 }) => {
@@ -37,6 +38,7 @@ const Hero = () => {
     hero_slogan: 'Gələcəyin mərkəzində olun!',
     hero_circle_image: ''
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchHeroData = async () => {
@@ -50,6 +52,8 @@ const Hero = () => {
         });
       } catch (error) {
         console.error('Error fetching hero data', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchHeroData();
@@ -59,7 +63,11 @@ const Hero = () => {
 
   return (
     <section className="hero" id="hero">
-      <div className="hero-main">
+      {loading ? (
+        <Loader />
+      ) : (
+      <>
+        <div className="hero-main">
         <div className="hero-content">
           <h1 dangerouslySetInnerHTML={{ __html: heroData.hero_title }}></h1>
           <p>{heroData.hero_description}</p>
@@ -109,7 +117,8 @@ const Hero = () => {
             <span>Nəticə Zəmanəti</span>
           </div>
         </div>
-      </div>
+      </>
+      )}
     </section>
   );
 };
