@@ -3,6 +3,7 @@ import { FiTrendingUp, FiUsers, FiAward } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import api from '../api';
 import Loader from './common/Loader';
+import heroImage from '../assets/hero.png';
 import './Hero.scss';
 
 const Counter = ({ target, duration = 2000 }) => {
@@ -47,8 +48,7 @@ const Hero = () => {
         setHeroData({
           hero_title: res.data.hero_title || heroData.hero_title,
           hero_description: res.data.hero_description || heroData.hero_description,
-          hero_slogan: res.data.hero_slogan || heroData.hero_slogan,
-          hero_circle_image: res.data.hero_circle_image || ''
+          hero_slogan: res.data.hero_slogan || heroData.hero_slogan
         });
       } catch (error) {
         console.error('Error fetching hero data', error);
@@ -84,11 +84,7 @@ const Hero = () => {
           </div>
           
           <div className="center-circle">
-            {heroData.hero_circle_image ? (
-              <img src={`${API_URL}${heroData.hero_circle_image}`} alt="Hero Circle" />
-            ) : (
-              <span>TutorNihat</span>
-            )}
+            <img src={heroImage} alt="Hero Circle" />
           </div>
         </div>
       </div>
