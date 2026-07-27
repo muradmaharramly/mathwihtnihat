@@ -4,13 +4,14 @@
   align-items: center;
   padding: 3rem 0;
   width: 100%;
+  min-height: 300px; /* Səhifədə şaquli olaraq ortalanmış kimi görünməsi üçün */
 
   .spinner {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
-    border-top-color: var(--accent, #aa3bff);
+    border-top-color: #000000; /* Qara rəng */
     animation: spin 1s ease-in-out infinite;
   }
 }
