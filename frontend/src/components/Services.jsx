@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api';
-import { FiBookOpen } from 'react-icons/fi';
+import { FiBookOpen, FiX } from 'react-icons/fi';
 import Loader from './common/Loader';
 import './Services.scss';
 
@@ -11,7 +11,11 @@ const Services = () => {
   const [loading, setLoading] = useState(true);
 
   const togglePrices = (id) => {
-    setOpenPricesId(openPricesId === id ? null : id);
+    setOpenPricesId(id);
+  };
+
+  const closePrices = () => {
+    setOpenPricesId(null);
   };
 
   useEffect(() => {
@@ -60,27 +64,36 @@ const Services = () => {
                   className="btn-show-prices" 
                   onClick={() => togglePrices(service.id)}
                 >
-                  {openPricesId === service.id ? 'Qiymətləri Gizlət' : 'Qiymətlərə Bax'}
+                  Qiymətlərə Bax
                 </button>
-
-                {openPricesId === service.id && (
-                  <div className="pricing-list">
-                    {prices.filter(p => p.service_id === service.id).length === 0 ? (
-                      <div className="price-item"><span className="class-name">Qiymət təyin edilməyib</span></div>
-                    ) : (
-                      prices.filter(p => p.service_id === service.id).map(price => (
-                        <div key={price.id} className="price-item">
-                          <span className="class-name">{price.class_name} ({price.type})</span>
-                          <span className="price-val">{price.price} AZN</span>
-                        </div>
-                      ))
-                    )}
-                  </div>
-                )}
               </div>
+
             ))
           )}
         </div>
+        
+        {openPricesId && (
+          <div className="pricing-modal-overlay" onClick={closePrices}>
+            <div className="pricing-modal-content" onClick={e => e.stopPropagation()}>
+              <button className="close-btn" onClick={closePrices}><FiX size={24}/></button>
+              <h3>
+                {services.find(s => s.id === openPricesId)?.title} - Qiymətlər
+              </h3>
+              <div className="pricing-list">
+                {prices.filter(p => p.service_id === openPricesId).length === 0 ? (
+                  <div className="price-item"><span className="class-name">Qiymət təyin edilməyib</span></div>
+                ) : (
+                  prices.filter(p => p.service_id === openPricesId).map(price => (
+                    <div key={price.id} className="price-item">
+                      <span className="class-name">{price.class_name} ({price.type})</span>
+                      <span className="price-val">{price.price} AZN</span>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
