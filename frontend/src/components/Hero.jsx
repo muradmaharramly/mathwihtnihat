@@ -80,7 +80,7 @@ const Hero = () => {
         </div>
         <div className="hero-dynamic-right">
           <div className="text-card stat-2">
-            "{heroData.hero_slogan}"
+            &quot;{heroData.hero_slogan}&quot;
           </div>
           
           <div className="center-circle">
@@ -117,6 +117,7 @@ const Hero = () => {
             <span>Nəticə Zəmanəti</span>
           </div>
         </div>
+      </div>
       </>
       )}
     </section>
